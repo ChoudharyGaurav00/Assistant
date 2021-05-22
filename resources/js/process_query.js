@@ -1,4 +1,5 @@
 joinWords = ['join', 'joined', 'joining']
+whatsappWords = ['text', 'whatsapp', 'message']
 
 function processQuery(query) {
     query = query.toLowerCase()
@@ -9,5 +10,10 @@ function processQuery(query) {
     for (joinWord of joinWords) {
         if (query.includes(joinWord))
             return handleJoinQueries(query)
+    }
+
+    for (whatsappWord of whatsappWords) {
+        if (query.includes(whatsappWord))
+            return handleWhatsappQueries(query)
     }
 }
