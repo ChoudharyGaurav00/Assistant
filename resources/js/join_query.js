@@ -1,13 +1,17 @@
-const all_subjects = [new Subject('cao', 'oce-ijqf-wse'), new Subject('se', 'zzq-bojq-crw')]
-const base_link = 'https://meet.google.com/'
+const allSubjects = [
+    new Subject('computer', 'https://meet.google.com/oce-ijqf-wse'),
+    new Subject('software', 'https://meet.google.com/zzq-bojq-crw'),
+    new Subject('operating', 'https://meet.google.com/wgj-pupt-sdo'),
+    new Subject('algorithm', 'https://us02web.zoom.us/j/5805726421')
+]
+
 
 function handleJoinQueries(query) {
     query = query.split(' ')
-    console.log(query)
 
     subjectLink = findSubjectLink(query)
     if (subjectLink)
-        join_class(subjectLink)
+        joinClass(subjectLink)
 
     else
         say('Sorry didnt recognize that subject')
@@ -15,7 +19,7 @@ function handleJoinQueries(query) {
 
 
 function findSubjectLink(query) {
-    for (subject of all_subjects) {
+    for (subject of allSubjects) {
         if (query.includes(subject.name))
             return subject.link
     }
@@ -23,7 +27,6 @@ function findSubjectLink(query) {
 }
 
 
-function join_class(class_link) {
-    link = base_link + class_link
-    open(link)
+function joinClass(subjectLink) {
+    open(subjectLink)
 }
