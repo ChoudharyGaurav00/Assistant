@@ -1,5 +1,6 @@
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 const recognition = new SpeechRecognition()
+recognition.lang = 'en-in'
 
 
 window.addEventListener("load", function loading() {

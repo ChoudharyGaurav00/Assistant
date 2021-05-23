@@ -1,28 +1,19 @@
+joinWords = ['join', 'joined', 'joining']
+whatsappWords = ['text', 'whatsapp', 'message']
+
 function processQuery(query) {
-    if (query.includes('join')) {
-        handleJoinQueries(query)
+    query = query.toLowerCase()
+
+    if (query.charAt(query.length - 1) == '.')
+        query = query.substring(0, query.length - 1)
+
+    for (joinWord of joinWords) {
+        if (query.includes(joinWord))
+            return handleJoinQueries(query)
     }
-}
 
-
-const all_subjects = [new Subject('cao', 'oce-ijqf-wse'), new Subject('se', 'zzq-bojq-crw')]
-const base_link = 'https://meet.google.com/'
-
-
-function handleJoinQueries(query) {
-    words = query.split(' ')
-    console.log(words)
-
-    for (subject of all_subjects) {
-        if (words.includes(subject.name)) {
-            join_class(subject.link)
-            break
-        }
+    for (whatsappWord of whatsappWords) {
+        if (query.includes(whatsappWord))
+            return handleWhatsappQueries(query)
     }
-}
-
-
-function join_class(class_link) {
-    link = base_link + class_link
-    open(link)
 }
