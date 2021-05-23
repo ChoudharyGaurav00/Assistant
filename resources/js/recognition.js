@@ -2,22 +2,28 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 const recognition = new SpeechRecognition()
 
 
+window.addEventListener("load", function loading() {
+    let started = document.getElementById("welcome");
+    // console.log(started.innerText);
+    p = started.innerText;
+    say(p)
+});
+
 function start_recognition() {
     recognition.start()
     console.log('Recognition started')
 }
 
-
 recognition.onresult = (event) => {
     const query = event.results[0][0].transcript
     console.log(query)
-    processQuery(query)
-}
-
-
-recognition.onnomatch = () => {
-    text = 'I didnt recognize that.'
-    say(text)
+    if (event.results[0][0].confidence > 0.3)
+        processQuery(query)
+    else {
+        text = 'I didnt recognize this.please try again';
+        console.log(text);
+        say(text)
+    }
 }
 
 
