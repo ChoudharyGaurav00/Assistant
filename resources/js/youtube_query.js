@@ -13,3 +13,18 @@ function handleYoutubeQueries(query) {
   }
   console.log("sorry did not recognize that key");
 }
+
+function youtubeKeyUpdate(key, link) {
+  let youtubeLinkflag = false;
+  console.log(key)
+  console.log("key update1");
+  for (let i = 0; i < youtubeArray.length; i++) {
+    console.log(youtubeArray[i]);
+    if (youtubeArray[i].key == key) {
+      console.log("key update");
+      youtubeLinkflag = true;
+      youtubeArray[i].link = link
+      return youtubeLinkflag;
+    }
+  }
+}
