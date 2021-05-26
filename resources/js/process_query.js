@@ -1,6 +1,6 @@
 joinWords = ['join', 'joined', 'joining']
 whatsappWords = ['text', 'whatsapp', 'message']
-
+openWords=['open','youtube']
 function processQuery(query) {
     query = query.toLowerCase()
 
@@ -10,6 +10,11 @@ function processQuery(query) {
     for (joinWord of joinWords) {
         if (query.includes(joinWord))
             return handleJoinQueries(query)
+    }
+
+    for (openWord of openWords) {
+        if (query.includes(openWord))
+            return handleYoutubeQueries(query)
     }
 
     for (whatsappWord of whatsappWords) {

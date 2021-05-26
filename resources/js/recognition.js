@@ -7,7 +7,7 @@ window.addEventListener("load", function loading() {
     let started = document.getElementById("welcome");
     // console.log(started.innerText);
     p = started.innerText;
-    say(p)
+    //say(p)
 });
 
 function start_recognition() {
