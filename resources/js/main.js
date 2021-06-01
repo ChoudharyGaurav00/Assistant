@@ -19,3 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem("youtubeKeys", JSON.stringify(youtubeArray));
     })
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('youtubeDeleteBtn').addEventListener('click', (ev) => {
+        ev.preventDefault();
+        const key = document.getElementById("youtubeDeletionKey").value.toLowerCase()
+        // const link = document.getElementById("youtubeLink").value
+        let flag = false
+        console.log(key);
+        console.log(youtubeArray);
+        for (let i = 0; i < youtubeArray.length; i++) {
+            // console.log(youtubeArray[i]);
+            if (youtubeArray[i].key == key) {
+                youtubeArray.splice(i, 1);
+                flag = true;
+                break;
+            }
+        }
+        if (flag) {
+            youtubeArray = JSON.stringify(youtubeArray)
+            localStorage.setItem("youtubeKeys", youtubeArray)
+            location.reload()
+        }
+    })
+})
