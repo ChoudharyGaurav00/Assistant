@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 youtubeArray.push(youtubeObj);
         }
         localStorage.setItem("youtubeKeys", JSON.stringify(youtubeArray));
+         location.reload();
     })
 })
 

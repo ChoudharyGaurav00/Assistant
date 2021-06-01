@@ -55,37 +55,63 @@
     </nav>
     <h1 id="welcome">Welcome To Assistant</h1>
     <button type="button" class="btn btn-primary" data-bs-toggle="button" id="start">Start</button>
-    <!-- youtube link addition button -->
-    <div class="container-fluid">
-        <button type="button" class="btn btn-danger" data-bs-toggle="button" id="youtube">Youtube</button>
-        <form>
-            <div class="formBox ">
-                <label for="title">Name</label>
-                <input type="text" id="youtubeKey" placeholder="Name" />
+    <!-- youtube section start -->
+    <div class=container-fluid>
+        <button class="btn btn-danger" data-toggle="collapse" data-target="#addYoutubeLink" >Youtube</button>
+        <button class="btn btn-primary" data-toggle="collapse" data-target="#deleteYoutubeLink">Remove</button>
+        <button class="btn btn-success" data-toggle="collapse" data-target="#tablelist">List</button>
+        <div class="collapse panel-collapse" id=addYoutubeLink>
+            <form>
+                <div class="formBox ">
+                    <label for="title">Keyword</label>
+                    <input type="text" id="youtubeKey" placeholder="Keyword" />
+                </div>
+                <div class="formBox">
+                    <label for="yr">Link</label>
+                    <input type="url" id="youtubeLink" placeholder="Link" />
+                </div>
+                <div class="formBox">
+                    <button type="button" class="btn btn-primary" id="btnYoutube">Click to Add</button>
+                </div>
+
+            </form>
+        </div>
+        <!-- link add section complete -->
+        <div id=tablelist class="collapse panel-collapse">
+            <table class="table table-striped ">
+                <tr class="bg-info">
+                    <th>Key</th>
+                    <th>Link</th>
+                </tr>
+                <tbody id="youtubeTable">
+                </tbody>
+            </table>
+        </div>
+        <script>
+            let tempYoutubeArray = JSON.parse(localStorage.getItem("youtubeKeys"));
+            buildTable(tempYoutubeArray)
+            function buildTable(data) {
+                let table = document.getElementById('youtubeTable')
+                for (let i = 0; i < data.length; i++) {
+                    var row = `<tr>
+							<td>${data[i].key}</td>
+							<td>${data[i].link}</td>
+							 </tr>`
+                    table.innerHTML += row
+                }
+            }
+        </script>
+        <!-- table display section complete -->
+        <div id="deleteYoutubeLink" class="collapse panel-collapse" >
+            <div class="formBox">
+                <label for="yr">Delete Keyword</label>
+                <input type="url" id="youtubeDeletionKey" placeholder="Keyword" />
             </div>
             <div class="formBox">
-                <label for="yr">Link</label>
-                <input type="url" id="youtubeLink" placeholder="Link" />
+                <button class="btn btn-primary " id="youtubeDeleteBtn">delete Keyword</button>
             </div>
-            <div class="formBox">
-                <button type="button" class="btn btn-primary" id="btnYoutube">Click to Add</button>
-            </div>
-
-        </form>
-    </div>
-    <!-- deletion started -->
-    <button class="btn btn-primary" data-toggle="collapse" data-target="#demo">Remove</button>
-
-    <div id="demo" class="collapse">
-        <div class="formBox">
-            <label for="yr">Deletion Link</label>
-            <input type="url" id="youtubeDeletionKey" placeholder="Link" />
         </div>
-        <div class="formBox">
-
-            <button class="btn btn-primary " id="youtubeDeleteBtn">delete</button>
         </div>
-
         <script src="resources/js/recognition.js"></script>
         <script src="resources/js/synthesis.js"></script>
         <script src="resources/js/subject.js"></script>
@@ -102,6 +128,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
         </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
 
